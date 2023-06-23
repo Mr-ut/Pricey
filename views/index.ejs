@@ -1,0 +1,32 @@
+<div class="author shadowed">
+    <h1 class="author__heading">Hi, This is Pricey</h1>
+    <p class="author__body">Get Product at the lowest Price</p>
+
+
+<form action="/" method="POST" class="searchUrl">
+
+    <input type="text" name="url" autofocus placeholder="Enter Url">
+
+    <input type="submit" value="Search" class="btn">
+</form>
+</div>
+<section class="articles">
+    <h2 class="articles__heading">Your Searched Items</h2>
+    <ul class="article-ul">
+        <% data.forEach(product => { %>
+        <li>
+            <a href="<%= product.url %>">
+                <span><%= product.title %></span>
+                <span class="article-list__date">&#8377;<%= product.price %></span>
+            </a>
+            <form action="/delete-post/<%= product._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete" class="btn-delete btn">
+            </form>
+        </li>
+        <% }) %>
+    </ul>
+    <% if (nextPage!=null) { %>
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% } %>
+    
+</section>
