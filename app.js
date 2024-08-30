@@ -40,7 +40,7 @@ const transporter = nodemailer.createTransport({
 async function sendEmail(product) {
     const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: product.userEmail,  // assuming you have user's email stored in the product document
+        to: product.userEmail,  
         subject: 'Price Drop Alert!',
         text: `The price of ${product.title} has dropped to ${product.price}. Check it out here: ${product.url}`
     };
